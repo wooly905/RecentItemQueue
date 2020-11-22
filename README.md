@@ -18,3 +18,5 @@ Initialize this data strcuture in size of 5
 12. GetItems() returns 5,7,6,4,3
 13. SetItem(3)
 14. GetItems() returns 3,5,7,6,4
+
+This data structure has been merged to PulsarFuse project
