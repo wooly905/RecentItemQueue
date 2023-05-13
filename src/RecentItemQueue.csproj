@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <Authors>Bruce Lee</Authors>
+        <Description>A queue-like data structure to present recent added items</Description>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <LangVersion>10.0</LangVersion>
+        <NeutralLanguage>en-US</NeutralLanguage>
+        <PackageLicenseExpression>BSD-3-Clause</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/wooly905/RecentItemQueue</PackageProjectUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Product>Wooly905.DataStructures.RecentItemQueue</Product>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/wooly905/PRS</RepositoryUrl>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <PackageVersion>1.0.0</PackageVersion>
+        <AssemblyName>Wooly905.DataStructures.RecentItemQueue</AssemblyName>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+</Project>
