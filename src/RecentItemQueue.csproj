@@ -18,7 +18,7 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <PackageVersion>1.0.0</PackageVersion>
+        <PackageVersion>1.0.1</PackageVersion>
         <AssemblyName>Wooly905.DataStructures.RecentItemQueue</AssemblyName>
     </PropertyGroup>
 

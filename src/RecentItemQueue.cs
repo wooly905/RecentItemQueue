@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace Wooly905.DataStructures;
 
 public class RecentItemQueue<T> where T : class
@@ -20,7 +18,7 @@ public class RecentItemQueue<T> where T : class
     public IReadOnlyList<T> GetItems()
     {
         // the latest item (last in) will be in the first place of output list
-        List<T> items = new();
+        List<T> items = new List<T>();
 
         if (_head == -1)
         {
@@ -49,7 +47,7 @@ public class RecentItemQueue<T> where T : class
 
     public void SetItem(T item)
     {
-        // inital case
+        // initial case
         if (_head == -1)
         {
             _head = 0;
@@ -76,7 +74,7 @@ public class RecentItemQueue<T> where T : class
                 target++;
             }
 
-            _content[_head] = targetItem;
+            _content[_head] = item;
 
             return;
         }
@@ -95,6 +93,19 @@ public class RecentItemQueue<T> where T : class
         if (_head == _size)
         {
             _head = 0;
+        }
+    }
+
+    public void SetItems(IEnumerable<T> items)
+    {
+        if (items == null)
+        {
+            return;
+        }
+
+        foreach (T item in items)
+        {
+            SetItem(item);
         }
     }
 

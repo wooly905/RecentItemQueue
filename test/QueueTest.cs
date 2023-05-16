@@ -4,12 +4,30 @@ using Xunit;
 
 namespace Test;
 
+[DebuggerDisplay("Id = {Id}")]
+#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
+internal class QueueTest
+#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
+{
+    public QueueTest(int id)
+    {
+        Id = id;
+    }
+
+    public int Id { get; }
+
+    public override bool Equals(object obj)
+    {
+        return obj is QueueTest t && t.Id == Id;
+    }
+}
+
 public class RecentItemQueueTests
 {
     [Fact]
     public void GetEmptyTest()
     {
-        RecentItemQueue<QueueTest> queue = new(10);
+        RecentItemQueue<QueueTest> queue = new RecentItemQueue<QueueTest>(10);
         IReadOnlyList<QueueTest> result = queue.GetItems();
 
         Assert.Equal(0, result.Count);
@@ -18,7 +36,7 @@ public class RecentItemQueueTests
     [Fact]
     public void SetItemsTest()
     {
-        RecentItemQueue<QueueTest> queue = new(10);
+        RecentItemQueue<QueueTest> queue = new RecentItemQueue<QueueTest>(10);
         queue.SetItem(new QueueTest(1));
         queue.SetItem(new QueueTest(2));
         queue.SetItem(new QueueTest(3));
@@ -33,7 +51,7 @@ public class RecentItemQueueTests
     [Fact]
     public void MutlipleSetItemsTest()
     {
-        RecentItemQueue<QueueTest> queue = new(10);
+        RecentItemQueue<QueueTest> queue = new RecentItemQueue<QueueTest>(10);
         queue.SetItem(new QueueTest(1));
         queue.SetItem(new QueueTest(2));
         queue.SetItem(new QueueTest(3));
@@ -50,7 +68,7 @@ public class RecentItemQueueTests
     public void SetItemsInCircularRoundTest()
     {
         int size = 4;
-        RecentItemQueue<QueueTest> queue = new(size);
+        RecentItemQueue<QueueTest> queue = new RecentItemQueue<QueueTest>(size);
         queue.SetItem(new QueueTest(1));
         IReadOnlyList<QueueTest> result = queue.GetItems();
         Assert.Equal(1, result.Count);
@@ -114,7 +132,7 @@ public class RecentItemQueueTests
     public void MultipleSetItemsInCircularRoundTest()
     {
         int size = 4;
-        RecentItemQueue<QueueTest> queue = new(size);
+        RecentItemQueue<QueueTest> queue = new RecentItemQueue<QueueTest>(size);
         queue.SetItem(new QueueTest(1));
         queue.SetItem(new QueueTest(2));
         queue.SetItem(new QueueTest(3));
@@ -142,7 +160,7 @@ public class RecentItemQueueTests
     public void MultipleSetItemsInCircularRound2Test()
     {
         int size = 4;
-        RecentItemQueue<QueueTest> queue = new(size);
+        RecentItemQueue<QueueTest> queue = new RecentItemQueue<QueueTest>(size);
         queue.SetItem(new QueueTest(1));
         queue.SetItem(new QueueTest(2));
         queue.SetItem(new QueueTest(3));
@@ -164,23 +182,5 @@ public class RecentItemQueueTests
         Assert.Equal(5, result2[1].Id);
         Assert.Equal(4, result2[2].Id);
         Assert.Equal(3, result2[3].Id);
-    }
-}
-
-[DebuggerDisplay("Id = {Id}")]
-#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
-internal class QueueTest
-#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
-{
-    public QueueTest(int id)
-    {
-        Id = id;
-    }
-
-    public int Id { get; }
-
-    public override bool Equals(object obj)
-    {
-        return obj is QueueTest t && t.Id == Id;
     }
 }
