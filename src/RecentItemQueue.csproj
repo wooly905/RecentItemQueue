@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <Authors>Bruce Lee</Authors>
-        <Description>A queue-like data structure to present recent added items</Description>
+        <Description>A stack-like data structure with most-recent-hit on top behavior</Description>
         <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
         <ImplicitUsings>enable</ImplicitUsings>
         <LangVersion>10.0</LangVersion>
@@ -13,7 +13,7 @@
         <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
         <Product>Wooly905.DataStructures.RecentItemQueue</Product>
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/wooly905/PRS</RepositoryUrl>
+        <RepositoryUrl>https://github.com/wooly905/RecentItemQueue</RepositoryUrl>
     </PropertyGroup>
 
     <PropertyGroup>
